@@ -14,8 +14,15 @@
             "email": "367013672@qq.com"
         }
     ],
+    "support": {
+        "email": "367013672@qq.com",
+        "issues": "https://www.iyuu.cn",
+        "forum": "https://www.iyuu.cn",
+        "wiki": "https://www.iyuu.cn",
+        "source": "https://www.iyuu.cn"
+    },
     "require": {
-        "php": "^7.3|^7.4|^8.0|^8.1|^8.2",
+        "php": "^7.0|^7.4|^8.0|^8.1|^8.2",
         "ext-json": "*",
         "ext-curl": "*"
     }
