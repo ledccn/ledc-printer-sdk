@@ -2,6 +2,8 @@
 
 namespace Ledc\PrinterSdk;
 
+use Exception;
+
 /**
  * 云打印SDK
  * @author david
@@ -17,11 +19,16 @@ class Printer
 
     /**
      * 构造函数
-     * @param array $config
+     * @param array|Config $config
+     * @throws Exception
      */
-    final public function __construct(array $config)
+    final public function __construct($config)
     {
-        $this->config = new Config($config);
+        if ($config instanceof Config) {
+            $this->config = $config;
+        } else {
+            $this->config = new Config($config);
+        }
     }
 
     /**
