@@ -2,6 +2,7 @@
 
 namespace Ledc\PrinterSdk;
 
+use Exception;
 use RuntimeException;
 
 /**
@@ -47,6 +48,7 @@ class Config
     /**
      * 构造函数
      * @param array $config
+     * @throws Exception
      */
     public function __construct(array $config)
     {
