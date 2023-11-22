@@ -2,6 +2,8 @@
 
 namespace Ledc\PrinterSdk;
 
+use Exception;
+
 /**
  * 单例调用打印SDK
  * - 先给$config赋值，即可用 PrinterHelper::getInstance(); 获取单例对象
@@ -9,23 +11,22 @@ namespace Ledc\PrinterSdk;
 final class PrinterHelper
 {
     /**
-     * @var array
+     * @var array<string, Printer>
      */
-    public static $config = [];
-    /**
-     * @var null
-     */
-    protected static $instance = null;
+    protected static $instances = [];
 
     /**
+     * 单例调用
+     * @param array $config
      * @return Printer
+     * @throws Exception
      */
-    public static function getInstance(): Printer
+    public static function getInstance(array $config): Printer
     {
-        if (null === self::$instance) {
-            self::$instance = new Printer(self::$config);
+        $app_id = (new Config($config))->getAppId();
+        if (!isset(self::$instances[$app_id])) {
+            self::$instances[$app_id] = new Printer($config);
         }
-
-        return self::$instance;
+        return self::$instances[$app_id];
     }
 }
