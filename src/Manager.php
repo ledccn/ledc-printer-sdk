@@ -18,7 +18,7 @@ class Manager
      * 路由前缀，接入点
      * @var string
      */
-    protected $route_prefix = '/printer';
+    protected $route_prefix = '/app/printer';
     /**
      * 管理者身份ID
      * @var int

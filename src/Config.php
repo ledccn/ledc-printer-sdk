@@ -38,7 +38,7 @@ class Config
      * 路由前缀，接入点
      * @var string
      */
-    protected $route_prefix = '/printer';
+    protected $route_prefix = '/app/printer';
     /**
      * 调试模式
      * @var bool
