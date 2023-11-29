@@ -18,7 +18,7 @@ class Manager
      * 路由前缀，接入点
      * @var string
      */
-    protected $route_prefix = '/app/printer';
+    protected $route_prefix = '/app/printer/manager';
     /**
      * 管理者身份ID
      * @var int
@@ -57,7 +57,7 @@ class Manager
      */
     public function create(string $title, string $description, string $callback_url)
     {
-        $response = $this->post($this->domain . $this->route_prefix . '/create', compact('title', 'description', 'callback_url'));
+        $response = $this->post($this->domain . $this->route_prefix . '/printer/create', compact('title', 'description', 'callback_url'));
         if ($this->isSuccess($response)) {
             return $response['data'];
         }
@@ -98,6 +98,7 @@ class Manager
      */
     protected function post(string $url, array $params, bool $isJsonRequest = false)
     {
+        echo $url . PHP_EOL;
         ksort($params);
         $params['hash'] = hash_hmac('sha1', http_build_query($params), $this->passphrase);
         if ($isJsonRequest) {
