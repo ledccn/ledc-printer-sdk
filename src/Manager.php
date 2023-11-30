@@ -98,7 +98,7 @@ class Manager
      */
     protected function post(string $url, array $params, bool $isJsonRequest = false)
     {
-        echo $url . PHP_EOL;
+        //echo $url . PHP_EOL;
         ksort($params);
         $params['hash'] = hash_hmac('sha1', http_build_query($params), $this->passphrase);
         if ($isJsonRequest) {
