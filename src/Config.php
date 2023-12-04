@@ -61,6 +61,23 @@ class Config
     }
 
     /**
+     * 生成app.config配置文件
+     * @param array $config
+     * @return string
+     * @throws Exception
+     */
+    public static function generateAppConfig(array $config): string
+    {
+        $config = new static($config);
+        $search = [
+            '{{gethost_url}}' => rtrim($config->getDomain(), '/') . $config->getRoutePrefix() . '/config',
+            '{{app_id}}' => $config->app_id,
+            '{{app_secret}}' => $config->app_secret,
+        ];
+        return strtr(file_get_contents(__DIR__ . '/app.config'), $search);
+    }
+
+    /**
      * 检查必须的属性
      * @return void
      * @throws Exception
